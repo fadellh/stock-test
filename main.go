@@ -2,11 +2,12 @@ package main
 
 import (
 	"sort"
+	"stock/app"
 	"strings"
 )
 
 func main() {
-
+	app.Start()
 }
 
 //FindFirstStringInBracket, jawaban Soal no. 3
