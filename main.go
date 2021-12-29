@@ -1,21 +1,36 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 )
 
 func main() {
-	ana := []string{"kita", "atik", "tika", "aku", "kia", "makan", "kua"}
-	anagramSplit(ana)
-	str := findFirstStringInBracket("(kita)(test)))()")
-
-	fmt.Println(str)
 
 }
 
-func anagramSplit(ana []string) [][]string {
+//FindFirstStringInBracket, jawaban Soal no. 3
+func FindFirstStringInBracket(str string) string {
+	if len(str) > 0 {
+		indexFirstBracketFound := strings.Index(str, "(")
+
+		if indexFirstBracketFound >= 0 {
+			runes := []rune(str)
+			wordsAfterFirstBracket := string(runes[indexFirstBracketFound:len(str)])
+			indexClosingBracketFound := strings.Index(wordsAfterFirstBracket, ")")
+
+			if indexClosingBracketFound >= 0 {
+				runes := []rune(wordsAfterFirstBracket)
+				return string(runes[1:indexClosingBracketFound])
+			}
+		}
+	}
+
+	return ""
+}
+
+//AnagramSplit, Jawaban soal No.4
+func AnagramSplit(ana []string) [][]string {
 	saver := map[string][]string{}
 	var orderStr string
 	var result [][]string
@@ -47,23 +62,4 @@ func orderString(item string) string {
 	}
 
 	return output
-}
-
-func findFirstStringInBracket(str string) string {
-	if len(str) > 0 {
-		indexFirstBracketFound := strings.Index(str, "(")
-
-		if indexFirstBracketFound >= 0 {
-			runes := []rune(str)
-			wordsAfterFirstBracket := string(runes[indexFirstBracketFound:len(str)])
-			indexClosingBracketFound := strings.Index(wordsAfterFirstBracket, ")")
-
-			if indexClosingBracketFound >= 0 {
-				runes := []rune(wordsAfterFirstBracket)
-				return string(runes[1:indexClosingBracketFound])
-			}
-		}
-	}
-
-	return ""
 }

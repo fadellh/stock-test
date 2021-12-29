@@ -1,0 +1,6 @@
+select us."ID",us.username,ust.parent_username from user_stockbit us
+left join 
+(
+	Select parent as "parent_id", "ID",username as "parent_username" from user_stockbit order by "parent_id"
+) ust 
+on us."parent" = ust."ID" order by us."ID"
