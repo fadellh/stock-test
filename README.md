@@ -2,7 +2,7 @@
 
 ## Intro
 
-Soal no.1 dapat dilihat di (https://github.com/fadellh/stock-test/Soal_No1_SQL.txt)
+Soal no.1 dapat dilihat di ![here](https://github.com/fadellh/stock-test/blob/master/Soal_No1_SQL.txt)
 Soal no.3 dan 4 dapat dilihat di main.go dengan nama function FindFirstStringInBracket dan AnagramSplit
 
 <!-- ## Installation
