@@ -33,3 +33,23 @@ func (s *service) FindMovieByKeyword(keyword, page string) (*[]MovieGeneral, err
 	return res, nil
 
 }
+
+func (s *service) FindMovieByID(id string) (*MovieDetail, error) {
+
+	if id == "" {
+		return nil, business.ErrInvalidSpec
+	}
+
+	res, err := s.repository.FindMovieByID(id)
+
+	if res == nil {
+		return nil, business.ErrNotFound
+	}
+
+	if err != nil {
+		return nil, business.ErrThirdParty
+	}
+
+	return res, nil
+
+}

@@ -13,6 +13,7 @@ func RegisterPath(e *echo.Echo, movieController *movie.Controller) {
 
 	movieV1 := e.Group("v1/movies")
 	movieV1.GET("", movieController.FindMovieByKeyword)
+	movieV1.GET("/:id", movieController.FindMovieByID)
 	//health check
 	e.GET("/health", func(c echo.Context) error {
 		return c.NoContent(200)

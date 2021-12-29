@@ -11,27 +11,27 @@ type Repository struct {
 	mock.Mock
 }
 
-// func (_m *Repository) FindMovieByID(id int) (*movie.Movie, error) {
-// 	ret := _m.Called(id)
+func (_m *Repository) FindMovieByID(id string) (*movie.MovieDetail, error) {
+	ret := _m.Called(id)
 
-// 	var r0 *movie.Movie
-// 	if rf, ok := ret.Get(0).(func(int) *movie.Movie); ok {
-// 		r0 = rf(id)
-// 	} else {
-// 		if ret.Get(0) != nil {
-// 			r0 = ret.Get(0).(*movie.Movie)
-// 		}
-// 	}
+	var r0 *movie.MovieDetail
+	if rf, ok := ret.Get(0).(func(string) *movie.MovieDetail); ok {
+		r0 = rf(id)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*movie.MovieDetail)
+		}
+	}
 
-// 	var r1 error
-// 	if rf, ok := ret.Get(1).(func(int) error); ok {
-// 		r1 = rf(id)
-// 	} else {
-// 		r1 = ret.Error(1)
-// 	}
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(id)
+	} else {
+		r1 = ret.Error(1)
+	}
 
-// 	return r0, r1
-// }
+	return r0, r1
+}
 
 func (_m *Repository) FindMovieByKeyword(keyword, page string) (*[]movie.MovieGeneral, error) {
 	ret := _m.Called(keyword, page)

@@ -56,3 +56,32 @@ func (ar ApiRepository) FindMovieByKeyword(keyword, page string) (*[]movie.Movie
 
 	return &moviesRes.Search, nil
 }
+
+func (ar ApiRepository) FindMovieByID(id string) (*movie.MovieDetail, error) {
+
+	req, err := http.NewRequest("GET", "http://www.omdbapi.com/", nil)
+	if err != nil {
+		return nil, err
+	}
+
+	q := req.URL.Query()
+	q.Add("apikey", "faf7e5bb")
+	q.Add("i", id)
+	req.URL.RawQuery = q.Encode()
+
+	response, err := http.Get(req.URL.String())
+
+	if err != nil {
+		return nil, err
+	}
+
+	responseData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	var moviesRes movie.MovieDetail
+	json.Unmarshal(responseData, &moviesRes)
+
+	return &moviesRes, nil
+}

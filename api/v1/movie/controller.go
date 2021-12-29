@@ -30,3 +30,16 @@ func (controller *Controller) FindMovieByKeyword(c echo.Context) error {
 	return c.JSON(common.NewSuccessResponse(movies))
 
 }
+
+func (controller *Controller) FindMovieByID(c echo.Context) error {
+
+	id := (c.Param("id"))
+
+	movie, err := controller.service.FindMovieByID(id)
+
+	if err != nil {
+		return c.JSON(common.NewErrorBusinessResponse(err))
+	}
+
+	return c.JSON(common.NewSuccessResponse(movie))
+}
