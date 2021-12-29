@@ -43,6 +43,12 @@ docker-compose up
 npm run test
 ``` -->
 
+## Run Project Manually
+
+```sh
+go run main.go
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
